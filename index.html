@@ -12,11 +12,33 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
 
+    <!-- daisyUi links -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <h1>Hello World!</h1>
+
+    <header>
+        <nav class="grid sm:grid-cols-1 md:grid-cols-2 px-20 py-3 bg-white">
+            <div class="flex nav-logo">
+                <img src="icons/github-logo.png" alt="">
+                <h1 class="text-3xl font-bold">GitHub Issue Tracker</h1>
+            </div>
+
+            <div class="flex py-2 justify-end gap-2 search-box">
+                <input type="text" placeholder="🔍 Search Issues..." class="px-3">
+                <button class="btn btn-primary join-item">Search</button>
+            </div>
+        </nav>
+    </header>
+
+    <section class="main py-10">
+
+        
+    </section>
 
 
     <script src="script.js"></script>

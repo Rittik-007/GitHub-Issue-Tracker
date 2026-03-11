@@ -1,15 +1,33 @@
 * {
-    margin: 0;
-    padding: 0;
     box-sizing: border-box;
 }
 
 body {
     font-family: "Geist", sans-serif;
     font-optical-sizing: auto;
+    background-color: #F8FAFC;
 }
 
-h1 {
-    color: crimson;
-    font-size: 5rem;
+nav{
+    border-bottom: 2px solid rgb(211, 210, 210);
+}
+.nav-logo{
+    align-items: center;
+    gap: 10px;
+}
+.nav-logo img{
+    width: 50px;
+}
+
+.search-box input{
+    outline: 2px solid silver;
+    border: none;
+    border-radius: 4px;
+    font-weight: 600;
+}
+.search-box input::placeholder{
+    font-weight: bold;
+}
+.search-box input:focus{
+    outline-color: rgb(24, 35, 186);
 }
