@@ -36,15 +36,16 @@ nav{
 }
 
 .main{
-    max-width: 1140px;
+    max-width: 1240px;
     margin: 0 auto;
 }
 .butn{
     margin-right: 5px;
     padding: 6px 30px;
     font-size: 1rem;
-    font-weight: 500;
+    font-weight: 400;
     border-radius: 4px;
+    color: #64748B;
     border: 1px solid silver;
     cursor: pointer;
 }
@@ -53,10 +54,19 @@ nav{
     border-color: #4A00FF;
 }
 .btn-active{
+    font-weight: 600;
     background-color: #4A00FF;
     color: aliceblue;
     border-color: #4A00FF;
 }
 .btn-active:hover{
     color: aliceblue !important;
+}
+
+.card-container{
+    background-color: #FBFBFB;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.08);
+}
+.card{
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.08);
 }

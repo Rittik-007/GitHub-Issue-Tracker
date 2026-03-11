@@ -42,9 +42,9 @@
 
         <!-- section buttons -->
          <div class="mb-4 p-6 bg-white rounded-lg common-shadow">
-            <button class="butn btn-active">All</button>
-            <button class="butn">Open</button>
-            <button class="butn">Closed</button>
+            <button onclick="toggleButton('all-btn')" class="butn btn-active" id="all-btn">All</button>
+            <button onclick="toggleButton('open-btn')" class="butn" id="open-btn">Open</button>
+            <button onclick="toggleButton('closed-btn')" class="butn" id="closed-btn">Closed</button>
          </div>
         <!-- Issue count box -->
          <div class="p-6 bg-white rounded-t-lg common-shadow grid grid-cols-2">
@@ -53,7 +53,7 @@
                     <img src="icons/Aperture.png" alt="">
                 </div>
                 <div>
-                    <h4 class="text-2xl font-semibold text-purple-950">50 Issues</h4>
+                    <h4 id="issue-count-box" class="text-2xl font-semibold text-purple-950"></h4>
                     <p>Track and manage your project issues</p>
                 </div>
             </div>
@@ -70,8 +70,8 @@
          </div>
 
          <!-- card section -->
-          <div class="card-container">
-
+          <div id="card-container" class="grid md:grid-cols-4 gap-3 p-6 card-container">
+            
           </div>
     </section>
 
