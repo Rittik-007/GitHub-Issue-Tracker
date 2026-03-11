@@ -17,7 +17,9 @@
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 
     <!-- font awesome link -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <link rel="stylesheet" href="style.css">
 </head>
@@ -41,13 +43,13 @@
     <section class="main py-10">
 
         <!-- section buttons -->
-         <div class="mb-4 p-6 bg-white rounded-lg common-shadow">
+        <div class="mb-4 p-6 bg-white rounded-lg common-shadow">
             <button onclick="toggleButton('all-btn')" class="butn btn-active" id="all-btn">All</button>
             <button onclick="toggleButton('open-btn')" class="butn" id="open-btn">Open</button>
             <button onclick="toggleButton('closed-btn')" class="butn" id="closed-btn">Closed</button>
-         </div>
+        </div>
         <!-- Issue count box -->
-         <div class="p-6 bg-white rounded-t-lg common-shadow grid grid-cols-2">
+        <div class="p-6 bg-white rounded-t-lg common-shadow grid grid-cols-2">
             <div class="flex gap-3 items-center">
                 <div class="flex items-center p-2 rounded-4xl bg-purple-200">
                     <img src="icons/Aperture.png" alt="">
@@ -67,13 +69,29 @@
                     <p>Closed</p>
                 </div>
             </div>
-         </div>
+        </div>
 
-         <!-- card section -->
-          <div id="card-container" class="grid md:grid-cols-4 gap-3 p-6 card-container">
-            
-          </div>
+        <!-- card section -->
+        <div id="card-container" class="grid md:grid-cols-4 gap-3 p-6 card-container">
+
+        </div>
     </section>
+
+
+    <!-- Open the modal using ID.showModal() method -->
+    <!-- <button class="btn" onclick="my_modal_1.showModal()">open modal</button> -->
+    <dialog id="my_modal_1" class="modal">
+        <div class="modal-box">
+            <h3 class="text-lg font-bold">Hello!</h3>
+            <p class="py-4">Press ESC key or click the button below to close</p>
+            <div class="modal-action">
+                <form method="dialog">
+                    <!-- if there is a button in form, it will close the modal -->
+                    <button class="btn btn-primary text-white">Close</button>
+                </form>
+            </div>
+        </div>
+    </dialog>
 
 
     <script src="script.js"></script>

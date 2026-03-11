@@ -41,14 +41,15 @@ const loadAllIssue = () => {
 
 const displayAllIssue = (issues) => {
     for (let issue of issues) {
+        
         const issueCountBox = document.getElementById('issue-count-box');
         issueCountBox.innerText = issues.length + ' Issues';
 
         const card = document.createElement('div');
         if (issue.status == 'open') {
-
+            
             card.innerHTML = `
-            <div class="card bg-white rounded-md border-t-4 border-green-400 h-full">
+            <div onclick="my_modal_1.showModal()" class="card bg-white rounded-md border-t-4 border-green-400 h-full">
                 <div class="p-4">
                     <div class="flex justify-between mb-3">
                         <img src="icons/Open-Status.png" alt="">
@@ -70,7 +71,7 @@ const displayAllIssue = (issues) => {
         `;
         } else if (issue.status == 'closed') {
             card.innerHTML = `
-            <div class="card bg-white rounded-md border-t-4 border-purple-700 h-full">
+            <div onclick="my_modal_1.showModal()" class="card bg-white rounded-md border-t-4 border-purple-700 h-full">
                 <div class="p-4">
                     <div class="flex justify-between mb-3">
                         <img src="icons/Open-Status.png" alt="">
