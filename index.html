@@ -16,6 +16,9 @@
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 
+    <!-- font awesome link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -37,7 +40,39 @@
 
     <section class="main py-10">
 
-        
+        <!-- section buttons -->
+         <div class="mb-4 p-6 bg-white rounded-lg common-shadow">
+            <button class="butn btn-active">All</button>
+            <button class="butn">Open</button>
+            <button class="butn">Closed</button>
+         </div>
+        <!-- Issue count box -->
+         <div class="p-6 bg-white rounded-t-lg common-shadow grid grid-cols-2">
+            <div class="flex gap-3 items-center">
+                <div class="flex items-center p-2 rounded-4xl bg-purple-200">
+                    <img src="icons/Aperture.png" alt="">
+                </div>
+                <div>
+                    <h4 class="text-2xl font-semibold text-purple-950">50 Issues</h4>
+                    <p>Track and manage your project issues</p>
+                </div>
+            </div>
+            <div class="flex justify-end gap-3">
+                <div class="flex justify-end items-center gap-1">
+                    <i class="fa-solid fa-circle text-green-500"></i>
+                    <p>Open</p>
+                </div>
+                <div class="flex justify-end items-center gap-1">
+                    <i class="fa-solid fa-circle text-purple-700"></i>
+                    <p>Closed</p>
+                </div>
+            </div>
+         </div>
+
+         <!-- card section -->
+          <div class="card-container">
+
+          </div>
     </section>
 
 
