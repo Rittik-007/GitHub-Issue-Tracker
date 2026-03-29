@@ -62,13 +62,13 @@ const displayAllIssue = (issues) => {
                 <div class="p-4">
                     <div class="flex justify-between mb-3">
                         <img src="icons/Open-Status.png" alt="">
-                        <p class="bg-red-200 text-red-500 px-4 rounded-xl uppercase">${issue.priority}</p>
+                        <p class="${issue.priority == 'high' ? 'bg-red-200 text-red-600' : issue.priority == 'medium' ? 'bg-yellow-200 text-yellow-600' : 'bg-green-200 text-green-600'} px-4 rounded-xl uppercase">${issue.priority}</p>
                     </div>
                     <h3 class="font-semibold text-purple-950">${issue.title}</h3>
                     <p class="text-gray-400 font-light text-[0.8rem] mt-1.5 mb-1.5">${issue.description}</p>
                     <div class="flex gap-1.5 mt-2">
-                        <p class="bg-red-200 text-[0.8rem] text-red-500 py-0.5 px-3 rounded-2xl border border-red-500"><i class="fa-solid fa-bug"></i> ${issue.labels[0]}</p>
-                        <p class="bg-amber-100 text-[0.8rem] text-amber-500 py-0.5 px-3 rounded-2xl border border-amber-500"><i class="fa-solid fa-life-ring"></i> ${issue.labels[1]}</p>
+                        <p class="bg-red-200 text-[0.7rem] text-red-500 py-0.5 px-3 rounded-2xl border border-red-500"><i class="fa-solid fa-bug"></i> ${issue.labels[0]}</p>
+                        <p class="bg-amber-100 text-[0.7rem] text-amber-500 py-0.5 px-3 rounded-2xl border border-amber-500"><i class="fa-solid fa-life-ring"></i> ${issue.labels[1]}</p>
                     </div>
                 </div>
                 <hr class="border-gray-300">
@@ -84,7 +84,7 @@ const displayAllIssue = (issues) => {
                 <div class="p-4">
                     <div class="flex justify-between mb-3">
                         <img src="icons/Closed- Status.png" alt="">
-                        <p class="bg-red-200 text-red-500 px-4 rounded-xl uppercase">${issue.priority}</p>
+                        <p class="${issue.priority == 'high' ? 'bg-red-200 text-red-600' : issue.priority == 'medium' ? 'bg-yellow-200 text-yellow-600' : 'bg-green-200 text-green-600'} px-4 rounded-xl uppercase">${issue.priority}</p>
                     </div>
                     <h3 class="font-semibold text-purple-950">${issue.title}</h3>
                     <p class="text-gray-400 font-light text-[0.8rem] mt-1.5 mb-1.5">${issue.description}</p>
@@ -131,13 +131,13 @@ const displayOpenIssue = (issues) => {
                 <div class="p-4">
                     <div class="flex justify-between mb-3">
                         <img src="icons/Open-Status.png" alt="">
-                        <p class="bg-red-200 text-red-500 px-4 rounded-xl uppercase">${issue.priority}</p>
+                        <p class="${issue.priority == 'high' ? 'bg-red-200 text-red-600' : issue.priority == 'medium' ? 'bg-yellow-200 text-yellow-600' : 'bg-green-200 text-green-600'} px-4 rounded-xl uppercase">${issue.priority}</p>
                     </div>
                     <h3 class="font-semibold text-purple-950">${issue.title}</h3>
                     <p class="text-gray-400 font-light text-[0.8rem] mt-1.5 mb-1.5">${issue.description}</p>
                     <div class="flex gap-1.5 mt-2">
-                        <p class="bg-red-200 text-[0.8rem] text-red-500 py-0.5 px-3 rounded-2xl border border-red-500"><i class="fa-solid fa-bug"></i> ${issue.labels[0]}</p>
-                        <p class="bg-amber-100 text-[0.8rem] text-amber-500 py-0.5 px-3 rounded-2xl border border-amber-500"><i class="fa-solid fa-life-ring"></i> ${issue.labels[1]}</p>
+                        <p class="bg-red-200 text-[0.7rem] text-red-500 py-0.5 px-3 rounded-2xl border border-red-500"><i class="fa-solid fa-bug"></i> ${issue.labels[0]}</p>
+                        <p class="bg-amber-100 text-[0.7rem] text-amber-500 py-0.5 px-3 rounded-2xl border border-amber-500"><i class="fa-solid fa-life-ring"></i> ${issue.labels[1]}</p>
                     </div>
                 </div>
                 <hr class="border-gray-300">
@@ -148,9 +148,9 @@ const displayOpenIssue = (issues) => {
             </div>
         `;
 
-        cardContainer.appendChild(card);
+            cardContainer.appendChild(card);
         }
-        
+
         issueCountBox.innerText = cardContainer.childNodes.length + ' Issues';
     }
 }
@@ -170,14 +170,14 @@ const displayClosedIssue = (issues) => {
 
         if (issue.status == 'closed') {
 
-            const card = document.createElement('div'); 
-            
+            const card = document.createElement('div');
+
             card.innerHTML = `
             <div onclick="my_modal_1.showModal()" class="card bg-white rounded-md border-t-4 border-purple-700 h-full">
                 <div class="p-4">
                     <div class="flex justify-between mb-3">
                         <img src="icons/Closed- Status.png" alt="">
-                        <p class="bg-red-200 text-red-500 px-4 rounded-xl uppercase">${issue.priority}</p>
+                        <p class="${issue.priority == 'high' ? 'bg-red-200 text-red-600' : issue.priority == 'medium' ? 'bg-yellow-200 text-yellow-600' : 'bg-green-200 text-green-600'} px-4 rounded-xl uppercase">${issue.priority}</p>
                     </div>
                     <h3 class="font-semibold text-purple-950">${issue.title}</h3>
                     <p class="text-gray-400 font-light text-[0.8rem] mt-1.5 mb-1.5">${issue.description}</p>
@@ -194,9 +194,9 @@ const displayClosedIssue = (issues) => {
             </div>
         `;
 
-        cardContainer.appendChild(card);
+            cardContainer.appendChild(card);
         }
-        
+
         issueCountBox.innerText = cardContainer.childNodes.length + ' Issues';
     }
 }

@@ -27,13 +27,13 @@
 <body>
 
     <header>
-        <nav class="grid sm:grid-cols-1 md:grid-cols-2 px-20 py-3 bg-white">
+        <nav class="grid sm:grid-cols-1 md:grid-cols-2 bg-white">
             <div class="flex nav-logo">
                 <img src="icons/github-logo.png" alt="">
                 <h1 class="text-3xl font-bold">GitHub Issue Tracker</h1>
             </div>
 
-            <div class="flex py-2 justify-end gap-2 search-box">
+            <div class="flex py-2 gap-2 search-box">
                 <input type="text" placeholder="🔍 Search Issues..." class="px-3">
                 <button class="btn btn-primary join-item">Search</button>
             </div>
@@ -49,7 +49,7 @@
             <button onclick="toggleButton('closed-btn')" class="butn" id="closed-btn">Closed</button>
         </div>
         <!-- Issue count box -->
-        <div class="p-6 bg-white rounded-t-lg common-shadow grid grid-cols-2">
+        <div class="p-6 bg-white rounded-t-lg common-shadow grid sm:grid-cols-1 gap-4 md:grid-cols-2">
             <div class="flex gap-3 items-center">
                 <div class="flex items-center p-2 rounded-4xl bg-purple-200">
                     <img src="icons/Aperture.png" alt="">
@@ -59,7 +59,7 @@
                     <p>Track and manage your project issues</p>
                 </div>
             </div>
-            <div class="flex justify-end gap-3">
+            <div class="flex justify-end gap-3 border-t-1 border-gray-500 pt-2 md:border-0 md:pt-0">
                 <div class="flex justify-end items-center gap-1">
                     <i class="fa-solid fa-circle text-green-500"></i>
                     <p>Open</p>
