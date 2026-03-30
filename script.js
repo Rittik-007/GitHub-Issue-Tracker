@@ -42,6 +42,42 @@ const toggleButton = (id) => {
 }
 
 
+// ======== Displaying details in modal =========
+const showDetails = async (id) => {
+    const url = `https://phi-lab-server.vercel.app/api/v1/lab/issue/${id}`
+
+    const res = await fetch(url);
+    const details = await res.json();
+    displayModal(details.data);
+}
+const displayModal = (issue) => {
+
+    document.getElementById('show_modal').showModal();
+
+    const modalBox = document.getElementById('modal-container');
+    modalBox.innerHTML = `
+        <h3 class="font-semibold text-[1.2rem] text-purple-950 mb-1">${issue.title}</h3>
+        <span><p class="${issue.status == 'open' ? 'bg-green-600 text-white': 'bg-purple-600 text-white'} inline pb-1 px-4 rounded-xl">${issue.status}</p> <i class="fa-solid fa-circle text-gray-400 text-[0.3rem] mx-1.5"></i> <p class="inline text-[0.7rem] text-gray-400 font-semibold">Opened by ${issue.author}</p> <i class="fa-solid fa-circle text-gray-400 text-[0.3rem] mx-1.5"></i>  <p class="inline text-[0.7rem] text-gray-400 font-semibold">Opened by ${issue.createdAt}</p></span>
+        <div class="flex gap-1.5 my-7">
+            <p class="${issue.labels[0] == 'enhancement' ? 'bg-green-200 text-green-500 border-green-500' : issue.labels[0] == 'documentation' ? 'bg-gray-200 text-gray-500 border-gray-500' : 'bg-red-200 text-red-500 border-red-500'} text-[0.7rem] py-1 px-3 rounded-2xl border">${issue.labels[0] == 'bug' ? '<i class="fa-solid fa-bug"></i> ' : issue.labels[0] == 'documentation' ? '<i class="fa-regular fa-clipboard"></i> ' : '<i class="fa-solid fa-code"></i> '} ${issue.labels[0]}</p>
+            <p class="${issue.labels[1] == 'enhancement' ? 'bg-green-200 text-green-500 border-green-500' : issue.labels[1] == 'good first issue' ? 'bg-purple-200 text-purple-500 border-purple-500' : issue.labels[1] == 'help wanted' ? 'bg-red-600 text-red-200 border-red-600' : 'bg-amber-100 text-amber-500 border-amber-500'} text-[0.7rem] py-1 px-3 rounded-2xl border"><i class="fa-solid fa-life-ring"></i> ${issue.labels[1]}</p>
+        </div>
+        <p class="mb-6 text-[1rem] text-gray-500 font-light">${issue.description}</p>
+        <div class="bg-gray-100 rounded-[5px] p-4 flex">
+            <div class="flex-1">
+                <p class="font-light text-gray-500">Assignee: </p>
+                <p class="font-bold text-gray-700">${issue.assignee == '' ? 'Not Assigned' : `${issue.assignee}`}</p>
+            </div>
+            <div class="flex-1">
+                <p class="font-light text-gray-500">Priority: </p>
+                <p class="${issue.priority == 'high' ? 'bg-red-600 text-white' : issue.priority == 'medium' ? 'bg-yellow-600 text-white' : 'bg-green-600 text-white'} inline py-0.5 px-4 rounded-xl uppercase">${issue.priority}</p>
+            </div>
+        </div>
+    `
+}
+
+
+
 // ======== Displaying all issues =========
 const loadAllIssue = () => {
     const url = 'https://phi-lab-server.vercel.app/api/v1/lab/issues';
@@ -60,7 +96,7 @@ const displayAllIssue = (issues) => {
         if (issue.status == 'open') {
 
             card.innerHTML = `
-            <div onclick="my_modal_1.showModal()" class="card bg-white rounded-md border-t-4 border-green-400 h-full">
+            <div onclick="showDetails(${issue.id})" class="card bg-white rounded-md border-t-4 border-green-400 h-full">
                 <div class="p-4">
                     <div class="flex justify-between mb-3">
                         <img src="icons/Open-Status.png" alt="">
@@ -70,7 +106,7 @@ const displayAllIssue = (issues) => {
                     <p class="text-gray-400 font-light text-[0.8rem] mt-1.5 mb-1.5">${issue.description}</p>
                     <div class="flex gap-1.5 mt-2">
                         <p class="${issue.labels[0] == 'enhancement' ? 'bg-green-200 text-green-500 border-green-500' : issue.labels[0] == 'documentation' ? 'bg-gray-200 text-gray-500 border-gray-500' : 'bg-red-200 text-red-500 border-red-500'} text-[0.7rem] py-1 px-3 rounded-2xl border">${issue.labels[0] == 'bug' ? '<i class="fa-solid fa-bug"></i> ' : issue.labels[0] == 'documentation' ? '<i class="fa-regular fa-clipboard"></i> ' : '<i class="fa-solid fa-code"></i> '} ${issue.labels[0]}</p>
-                        <p class="${issue.labels[1] == 'enhancement' ? 'bg-green-200 text-green-500 border-green-500': issue.labels[1] == 'good first issue' ? 'bg-purple-200 text-purple-500 border-purple-500': issue.labels[1] == 'help wanted' ? 'bg-red-600 text-red-200 border-red-600' : 'bg-amber-100 text-amber-500 border-amber-500'} text-[0.7rem] py-1 px-3 rounded-2xl border"><i class="fa-solid fa-life-ring"></i> ${issue.labels[1]}</p>
+                        <p class="${issue.labels[1] == 'enhancement' ? 'bg-green-200 text-green-500 border-green-500' : issue.labels[1] == 'good first issue' ? 'bg-purple-200 text-purple-500 border-purple-500' : issue.labels[1] == 'help wanted' ? 'bg-red-600 text-red-200 border-red-600' : 'bg-amber-100 text-amber-500 border-amber-500'} text-[0.7rem] py-1 px-3 rounded-2xl border"><i class="fa-solid fa-life-ring"></i> ${issue.labels[1]}</p>
                     </div>
                 </div>
                 <hr class="border-gray-300">
@@ -82,7 +118,7 @@ const displayAllIssue = (issues) => {
         `;
         } else if (issue.status == 'closed') {
             card.innerHTML = `
-            <div onclick="my_modal_1.showModal()" class="card bg-white rounded-md border-t-4 border-purple-700 h-full">
+            <div onclick="showDetails(${issue.id})" class="card bg-white rounded-md border-t-4 border-purple-700 h-full">
                 <div class="p-4">
                     <div class="flex justify-between mb-3">
                         <img src="icons/Closed- Status.png" alt="">
@@ -92,7 +128,7 @@ const displayAllIssue = (issues) => {
                     <p class="text-gray-400 font-light text-[0.8rem] mt-1.5 mb-1.5">${issue.description}</p>
                     <div class="flex gap-1.5 mt-2">
                         <p class="${issue.labels[0] == 'enhancement' ? 'bg-green-200 text-green-500 border-green-500' : issue.labels[0] == 'documentation' ? 'bg-gray-200 text-gray-500 border-gray-500' : 'bg-red-200 text-red-500 border-red-500'} text-[0.7rem] py-1 px-3 rounded-2xl border">${issue.labels[0] == 'bug' ? '<i class="fa-solid fa-bug"></i> ' : issue.labels[0] == 'documentation' ? '<i class="fa-regular fa-clipboard"></i> ' : '<i class="fa-solid fa-code"></i> '} ${issue.labels[0]}</p>
-                        <p class="${issue.labels[1] == 'enhancement' ? 'bg-green-200 text-green-500 border-green-500': issue.labels[1] == 'good first issue' ? 'bg-purple-200 text-purple-500 border-purple-500': issue.labels[1] == 'help wanted' ? 'bg-red-600 text-red-200 border-red-600' : 'bg-amber-100 text-amber-500 border-amber-500'} text-[0.7rem] py-1 px-3 rounded-2xl border"><i class="fa-solid fa-life-ring"></i> ${issue.labels[1]}</p>
+                        <p class="${issue.labels[1] == 'enhancement' ? 'bg-green-200 text-green-500 border-green-500' : issue.labels[1] == 'good first issue' ? 'bg-purple-200 text-purple-500 border-purple-500' : issue.labels[1] == 'help wanted' ? 'bg-red-600 text-red-200 border-red-600' : 'bg-amber-100 text-amber-500 border-amber-500'} text-[0.7rem] py-1 px-3 rounded-2xl border"><i class="fa-solid fa-life-ring"></i> ${issue.labels[1]}</p>
                     </div>
                 </div>
                 <hr class="border-gray-300">
@@ -129,7 +165,7 @@ const displayOpenIssue = (issues) => {
             const card = document.createElement('div');
 
             card.innerHTML = `
-            <div onclick="my_modal_1.showModal()" class="card bg-white rounded-md border-t-4 border-green-400 h-full">
+            <div onclick="showDetails(${issue.id})" class="card bg-white rounded-md border-t-4 border-green-400 h-full">
                 <div class="p-4">
                     <div class="flex justify-between mb-3">
                         <img src="icons/Open-Status.png" alt="">
@@ -139,7 +175,7 @@ const displayOpenIssue = (issues) => {
                     <p class="text-gray-400 font-light text-[0.8rem] mt-1.5 mb-1.5">${issue.description}</p>
                     <div class="flex gap-1.5 mt-2">
                         <p class="${issue.labels[0] == 'enhancement' ? 'bg-green-200 text-green-500 border-green-500' : issue.labels[0] == 'documentation' ? 'bg-gray-200 text-gray-500 border-gray-500' : 'bg-red-200 text-red-500 border-red-500'} text-[0.7rem] py-1 px-3 rounded-2xl border">${issue.labels[0] == 'bug' ? '<i class="fa-solid fa-bug"></i> ' : issue.labels[0] == 'documentation' ? '<i class="fa-regular fa-clipboard"></i> ' : '<i class="fa-solid fa-code"></i> '} ${issue.labels[0]}</p>
-                        <p class="${issue.labels[1] == 'enhancement' ? 'bg-green-200 text-green-500 border-green-500': issue.labels[1] == 'good first issue' ? 'bg-purple-200 text-purple-500 border-purple-500': issue.labels[1] == 'help wanted' ? 'bg-red-600 text-red-200 border-red-600' : 'bg-amber-100 text-amber-500 border-amber-500'} text-[0.7rem] py-1 px-3 rounded-2xl border"><i class="fa-solid fa-life-ring"></i> ${issue.labels[1]}</p>
+                        <p class="${issue.labels[1] == 'enhancement' ? 'bg-green-200 text-green-500 border-green-500' : issue.labels[1] == 'good first issue' ? 'bg-purple-200 text-purple-500 border-purple-500' : issue.labels[1] == 'help wanted' ? 'bg-red-600 text-red-200 border-red-600' : 'bg-amber-100 text-amber-500 border-amber-500'} text-[0.7rem] py-1 px-3 rounded-2xl border"><i class="fa-solid fa-life-ring"></i> ${issue.labels[1]}</p>
                     </div>
                 </div>
                 <hr class="border-gray-300">
@@ -175,7 +211,7 @@ const displayClosedIssue = (issues) => {
             const card = document.createElement('div');
 
             card.innerHTML = `
-            <div onclick="my_modal_1.showModal()" class="card bg-white rounded-md border-t-4 border-purple-700 h-full">
+            <div onclick="showDetails(${issue.id})" class="card bg-white rounded-md border-t-4 border-purple-700 h-full">
                 <div class="p-4">
                     <div class="flex justify-between mb-3">
                         <img src="icons/Closed- Status.png" alt="">
@@ -185,7 +221,7 @@ const displayClosedIssue = (issues) => {
                     <p class="text-gray-400 font-light text-[0.8rem] mt-1.5 mb-1.5">${issue.description}</p>
                     <div class="flex gap-1.5 mt-2">
                         <p class="${issue.labels[0] == 'enhancement' ? 'bg-green-200 text-green-500 border-green-500' : issue.labels[0] == 'documentation' ? 'bg-gray-200 text-gray-500 border-gray-500' : 'bg-red-200 text-red-500 border-red-500'} text-[0.7rem] py-1 px-3 rounded-2xl border">${issue.labels[0] == 'bug' ? '<i class="fa-solid fa-bug"></i> ' : issue.labels[0] == 'documentation' ? '<i class="fa-regular fa-clipboard"></i> ' : '<i class="fa-solid fa-code"></i> '} ${issue.labels[0]}</p>
-                        <p class="${issue.labels[1] == 'enhancement' ? 'bg-green-200 text-green-500 border-green-500': issue.labels[1] == 'good first issue' ? 'bg-purple-200 text-purple-500 border-purple-500': issue.labels[1] == 'help wanted' ? 'bg-red-600 text-red-200 border-red-600' : 'bg-amber-100 text-amber-500 border-amber-500'} text-[0.7rem] py-1 px-3 rounded-2xl border"><i class="fa-solid fa-life-ring"></i> ${issue.labels[1]}</p>
+                        <p class="${issue.labels[1] == 'enhancement' ? 'bg-green-200 text-green-500 border-green-500' : issue.labels[1] == 'good first issue' ? 'bg-purple-200 text-purple-500 border-purple-500' : issue.labels[1] == 'help wanted' ? 'bg-red-600 text-red-200 border-red-600' : 'bg-amber-100 text-amber-500 border-amber-500'} text-[0.7rem] py-1 px-3 rounded-2xl border"><i class="fa-solid fa-life-ring"></i> ${issue.labels[1]}</p>
                     </div>
                 </div>
                 <hr class="border-gray-300">
