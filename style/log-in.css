@@ -1,0 +1,25 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Geist", sans-serif;
+    font-optical-sizing: auto;
+    background-color: #F8FAFC;
+    height: 100vh;
+}
+
+.shadow {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.14);
+}
+
+
+.input-fields input{
+    padding: 10px 16px;
+    border: none;
+    border-radius: 6px;
+    outline: 2px solid rgba(202, 199, 199, 0.825);
+}
+.input-fields input:focus{
+    outline-color: blue;
+}

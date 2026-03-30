@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GitHub Issue Tracker</title>
+    <title>Log In - GitHub Issue Tracker</title>
     <link rel="shortcut icon" href="icons/problem-solving.png" type="image/x-icon">
 
     <!-- font links -->
@@ -21,81 +21,43 @@
         integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/style/log-in.css">
 </head>
 
 <body>
 
-    <header>
-        <nav class="grid sm:grid-cols-1 md:grid-cols-2 bg-white">
-            <div class="flex nav-logo">
-                <img src="icons/github-logo.png" alt="">
-                <h1 class="text-3xl font-bold">GitHub Issue Tracker</h1>
+    <section class="w-full h-full p-5">
+        <form class="bg-white mx-auto max-w-110 p-7 rounded-[8px] shadow">
+            <div class="form-logo text-center mb-6">
+                <img src="icons/github-logo.png" alt="" class="mx-auto">
+                <h2 class="text-2xl text-gray-800 font-bold mt-4 mb-1">GitHub Issues Tracker</h2>
+                <p class="text-gray-600">Sign in to manage your issues</p>
             </div>
-
-            <div class="flex py-2 gap-2 search-box">
-                <input id="input-search" type="text" placeholder="🔍 Search Issues..." class="px-3">
-                <button id="btn-search" class="btn btn-primary join-item">Search</button>
-            </div>
-        </nav>
-    </header>
-
-    <section class="main py-10">
-
-        <!-- section buttons -->
-        <div class="mb-4 p-6 bg-white rounded-lg common-shadow">
-            <button onclick="toggleButton('all-btn')" class="butn btn-active" id="all-btn">All</button>
-            <button onclick="toggleButton('open-btn')" class="butn" id="open-btn">Open</button>
-            <button onclick="toggleButton('closed-btn')" class="butn" id="closed-btn">Closed</button>
-        </div>
-        <!-- Issue count box -->
-        <div class="p-6 bg-white rounded-t-lg common-shadow grid sm:grid-cols-1 gap-4 md:grid-cols-2">
-            <div class="flex gap-3 items-center">
-                <div class="flex items-center p-2 rounded-4xl bg-purple-200">
-                    <img src="icons/Aperture.png" alt="">
+            <div class="input-fields">
+                <div class="flex flex-col mb-4">
+                    <label for="username-input" class="block mb-1 text-gray-800">Username</label>
+                    <input id="username-input" type="text">
                 </div>
-                <div>
-                    <h4 id="issue-count-box" class="text-2xl font-semibold text-purple-950"></h4>
-                    <p>Track and manage your project issues</p>
+                <div class="flex flex-col">
+                    <label for="password-input" class="block mb-1 text-gray-800">Password</label>
+                    <input id="password-input" type="text">
+                </div>
+                <div class="flex flex-col mt-6">
+                    <button type="button" id="btn-signIn" class="btn btn-primary text-white cursor-pointer">Sign In</button>
                 </div>
             </div>
-            <div class="flex justify-end gap-3 border-t-1 border-gray-500 pt-2 md:border-0 md:pt-0">
-                <div class="flex justify-end items-center gap-1">
-                    <i class="fa-solid fa-circle text-green-500"></i>
-                    <p>Open</p>
-                </div>
-                <div class="flex justify-end items-center gap-1">
-                    <i class="fa-solid fa-circle text-purple-700"></i>
-                    <p>Closed</p>
+            <p class="text-gray-400 text-2xl text-center my-5">---------- <span class="font-semibold text-gray-900">OR</span> ----------</p>
+            <div class="text-center">
+                <p>Demo Credentials:</p>
+                <div class="bg-neutral-100 p-4 rounded-md">
+                    <p><span class="font-bold">Username: </span> admin</p>
+                    <p><span class="font-bold">Password: </span> 1234</p>
                 </div>
             </div>
-        </div>
-
-        <!-- card section -->
-        <div id="card-container" class="grid md:grid-cols-4 gap-3 p-6 card-container">
-
-        </div>
+        </form>
     </section>
 
-
-    <!-- Open the modal using ID.showModal() method -->
-    <!-- <button class="btn" onclick="my_modal_1.showModal()">open modal</button> -->
-    <dialog id="show_modal" class="modal">
-        <div class="modal-box">
-            <div id="modal-container">
-                
-            </div>
-            <div class="modal-action">
-                <form method="dialog">
-                    <!-- if there is a button in form, it will close the modal -->
-                    <button class="btn btn-primary text-white">Close</button>
-                </form>
-            </div>
-        </div>
-    </dialog>
-
-
-    <script src="script.js"></script>
+    <script src="/js/log-in.js"></script>
 </body>
 
 </html>
