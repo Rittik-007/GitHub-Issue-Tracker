@@ -10,7 +10,7 @@ document.getElementById('btn-signIn').addEventListener("click", () => {
     if(userValue == 'admin' && passwordValue == '1234'){
         alert('Log in successful');
 
-        window.location.assign("/home.html");
+        window.location.assign("home.html");
     }
     else{
         alert('Log in failed!');
